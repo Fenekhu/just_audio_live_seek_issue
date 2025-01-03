@@ -144,7 +144,11 @@ class ControlButtons extends StatelessWidget {
               return IconButton(
                 icon: const Icon(Icons.play_arrow),
                 iconSize: 64.0,
-                onPressed: player.play,
+                onPressed: () async { 
+                  player.play(); 
+                  await Future.delayed(const Duration(seconds: 2)); 
+                  await player.seek(null);
+                },
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
